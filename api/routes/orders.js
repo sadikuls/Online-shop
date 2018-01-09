@@ -10,7 +10,7 @@ router.get('/',function (req,res,next) {
 router.post('/',function (req,res,next) {
     res.status(200).send({
         message:"order created"
-    });
+    }).catch(next);
 });
 
 router.patch('/:orderId',function (req,res,next) {
