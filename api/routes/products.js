@@ -3,13 +3,13 @@ const router = express.Router();
 
 router.get('/',function (req,res,next) {
     res.status(200).send({
-        message:"all is well ! get request"
+        message:req.body
     });
 });
 
 router.post('/',function (req,res,next) {
     res.status(200).send({
-        message:"all is well ! post request"
+        message:req.body
     });
 });
 
