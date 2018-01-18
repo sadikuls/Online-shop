@@ -5,4 +5,6 @@ const port = process.env.PORT || 4000;
 
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(port,function () {
+    console.log("now listening from server")
+});

@@ -3,10 +3,16 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
+/*mongoose.connect(
+    "mongodb://online-shop:"+
+    process.env.MONGO_ATLAS_PW +
+    "@online-shop-shard-00-00-cj5lm.mongodb.net:27017,online-shop-shard-00-01-cj5lm.mongodb.net:27017,online-shop-shard-00-02-cj5lm.mongodb.net:27017/admin?replicaSet=Online-Shop-shard-0&ssl=true"
+);*/
 app.use(function(req,res,next) {
     res.header('Access-Control-Allow-Origin','*');
     res.header('Access-Control-Allow-Header',
