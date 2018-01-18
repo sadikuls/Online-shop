@@ -9,13 +9,15 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
 /*mongoose.connect(
-    "mongodb://online-shop:"+
-    process.env.MONGO_ATLAS_PW +
-    "@online-shop-shard-00-00-cj5lm.mongodb.net:27017,online-shop-shard-00-01-cj5lm.mongodb.net:27017,online-shop-shard-00-02-cj5lm.mongodb.net:27017/admin?replicaSet=Online-Shop-shard-0&ssl=true"
+    "mongodb://online-shop:sadikul@online-shop-shard-00-00-cj5lm.mongodb.net:27017," +
+    "online-shop-shard-00-01-cj5lm.mongodb.net:27017," +
+    "online-shop-shard-00-02-cj5lm.mongodb.net:27017/test?ssl=true&replicaSet=Online-Shop-shard-0&authSource=admin"
 );*/
-app.use(function(req,res,next) {
+mongoose.connect('mongodb://localhost/Online_shop');
+mongoose.Promise = global.Promise;
+/*app.use(function(req,res,next) {
     res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Header',
+    res.header('Access-Control-Allow-Headers',
         'Origin,X-Requested-With,Content-Type,Accept,Authorization');
 
     if(req.method == 'OPTIONS'){
@@ -23,7 +25,7 @@ app.use(function(req,res,next) {
             'PUT,POST,PATCH,DELETE,GET');
         return res.status(200).json({});
     }
-});
+});*/
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));

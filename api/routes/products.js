@@ -10,26 +10,42 @@ router.get('/',function (req,res,next) {
 });
 
 router.post('/',function (req,res,next) {
-    res.status(200).send({
-        message:req.body
-    });
     const product = new Product({
-        _id: new mongoose.Types.ObjectId(),
+        _id:new mongoose.Types.ObjectId(),
         name: req.body.name,
         price: req.body.price
     });
+
+    console.log("original product "+product);
     product
         .save()
-        .then(function (product) {
+        .then(function (response) {
             console.log(product);
             res.status(200).json({
                 message :"you are knocking a boss",
-                id : product
+                id : response
             });
         }).catch(function (reason) {
             console.log("reason of clash "+reason)
+         res.status(200).json({
+             message :"error",
+             id : response.message
+         });
     });
 
+});
+
+router.get('/:productId',function (req,res,next) {
+    const id = req.params.productId;
+    Product.findById(id).exec()
+        .then(function (value) {
+            res.status(200).send({
+                message :"success",
+                id : value
+            });
+        }).catch(function (reason) {
+
+    });
 });
 
 router.patch('/:productId',function (req,res,next) {
